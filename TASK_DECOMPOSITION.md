@@ -51,3 +51,53 @@ body
   soi `git diff --staged` để chắc không có <div>, style, script.
 - Lỗi AI phát hiện được: hướng dẫn ban đầu thiếu `tabindex="-1"` trên <main>
   → Enter trên skip-link không chuyển focus vào main; đã bổ sung.
+
+  ---
+
+## T-02 — Enterprise Developer Portfolio
+
+### Sub-tasks
+| ID    | Task                     | File      | Commit                         |
+|-------|--------------------------|-----------|--------------------------------|
+| T-02H | HTML hooks for T-02      | index.html| feat(html): add theme toggle, project cards & asset links |
+| T-02A | Design tokens & reset    | style.css | feat(css): tokens & reset      |
+| T-02B | 2D responsive grid       | style.css | feat(css): responsive grid     |
+| T-02C | Theme engine             | theme.js  | feat(js): dark mode engine     |
+
+### Token Contract (style.css)
+- Colors: --color-bg, --color-surface, --color-text, --color-text-muted,
+  --color-accent, --color-border
+- Spacing: --space-xs, --space-sm, --space-md, --space-lg
+- Other: --radius, --content-width, --font-body
+- Light values in `:root`, dark values in `:root[data-theme="dark"]`.
+- Hex codes allowed ONLY inside these two token blocks.
+
+### Theme Contract (theme.js)
+- State: `<html data-theme="light|dark">`
+- Persistence: localStorage key `theme`, values `light` | `dark`
+- First visit: follow OS via `prefers-color-scheme`
+- Toggle: `<button id="theme-toggle" aria-pressed="true|false">`
+- localStorage blocked → theme still works, no console error
+
+### Layout Contract
+- Mobile-first, 375px baseline, no horizontal scroll
+- Header & nav: Flexbox; project list: Grid
+  `repeat(auto-fit, minmax(min(100%, 280px), 1fr))`
+- No new <div>
+
+### Acceptance Criteria
+- [ ] No horizontal scroll at 375px
+- [ ] All text contrast ≥ 4.5:1 in both themes
+- [ ] Zero console errors while toggling theme 10+ times
+- [ ] Theme persists after reload (localStorage `theme`)
+- [ ] Full keyboard flow: Tab → skip-link → toggle → nav links; Enter/Space works
+- [ ] CLS = 0, LCP < 2.0s (Lighthouse / throttled network)
+- [ ] Each commit touches one file type only
+
+### AI Prompts (one per sub-task)
+- T-02A: "Follow project-rules.md. Write ONLY style.css tokens + reset per the
+  Token Contract. No layout, no JS."
+- T-02B: "Using ONLY existing tokens, add layout: flex header/nav and grid
+  .project-grid per Layout Contract. No new colors, no JS."
+- T-02C: "Write ONLY theme.js per Theme Contract. Vanilla ES6+, const by default,
+  no innerHTML, wrap localStorage in try/catch."
