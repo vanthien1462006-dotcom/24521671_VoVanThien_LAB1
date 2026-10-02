@@ -52,6 +52,12 @@ a {
   color: var(--color-accent);
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 :focus-visible {
   outline: 3px solid var(--color-accent);
   outline-offset: 2px;
@@ -86,12 +92,10 @@ footer {
 
 /* ===== T-02B: 1D layout — Flexbox ===== */
 .site-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
   gap: var(--space-sm);
-  padding-block: var(--space-md);
+  justify-items: start;
+  padding-block: var(--space-lg) var(--space-md);
 }
 
 .nav-links {
@@ -149,4 +153,31 @@ h2 {
 footer {
   padding-block: var(--space-lg);
   color: var(--color-text-muted);
+}
+
+/* ===== Ex3 T-06A: Hero ===== */
+.hero-portrait {
+  width: 160px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--color-accent);
+}
+
+.hero-pitch {
+  max-width: 60ch;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 48rem) {
+  .site-header {
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .hero-portrait {
+    grid-row: span 3;
+    width: 200px;
+  }
 }
