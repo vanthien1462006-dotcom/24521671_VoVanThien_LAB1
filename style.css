@@ -181,3 +181,17 @@ footer {
     width: 200px;
   }
 }
+/* ===== Ex3 T-06B: State-driven theme icon ===== */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.theme-toggle__icon::before {
+  content: "☀️";
+}
+
+.theme-toggle[aria-pressed="true"] .theme-toggle__icon::before {
+  content: "🌙";
+}
