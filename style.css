@@ -74,3 +74,79 @@ a {
 .skip-link:focus {
   transform: translateY(0);
 }
+
+/* ===== T-02B: Page frame (no wrapper divs) ===== */
+.site-header,
+.site-nav,
+main,
+footer {
+  width: min(100% - 2 * var(--space-sm), var(--content-width));
+  margin-inline: auto;
+}
+
+/* ===== T-02B: 1D layout — Flexbox ===== */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-block: var(--space-md);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  list-style: none;
+  padding-block: var(--space-xs);
+  border-block-end: 1px solid var(--color-border);
+}
+
+.theme-toggle {
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+}
+
+.theme-toggle[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ===== T-02B: 2D layout — Grid ===== */
+main section {
+  padding-block-start: var(--space-lg);
+}
+
+h2 {
+  margin-block-end: var(--space-sm);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.project-card {
+  height: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+}
+
+.project-card p {
+  color: var(--color-text-muted);
+}
+
+footer {
+  padding-block: var(--space-lg);
+  color: var(--color-text-muted);
+}
