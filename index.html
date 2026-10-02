@@ -4,17 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vo Van Thien — Developer Portfolio</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
 </head>
 <body>
   <!-- ATOMIC MILESTONE T-01: No div tags allowed -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header>
+  <header class="site-header">
     <h1>Vo Van Thien, Web Developer</h1>
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">Dark mode</button>
   </header>
 
-  <nav aria-label="Primary">
-    <ul>
+  <nav class="site-nav" aria-label="Primary">
+    <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
     </ul>
@@ -28,10 +32,26 @@
 
     <section id="projects" aria-labelledby="projects-title">
       <h2 id="projects-title">Projects</h2>
-      <article>
-        <h3>Developer Portfolio</h3>
-        <p>Semantic, accessible personal site built with vanilla HTML.</p>
-      </article>
+      <ul class="project-grid">
+        <li>
+          <article class="project-card">
+            <h3>Developer Portfolio</h3>
+            <p>Semantic, accessible personal site built with vanilla HTML, CSS and JS.</p>
+          </article>
+        </li>
+        <li>
+          <article class="project-card">
+            <h3>Theme Engine</h3>
+            <p>Light and dark themes driven by CSS custom properties and localStorage.</p>
+          </article>
+        </li>
+        <li>
+          <article class="project-card">
+            <h3>Drum Kit</h3>
+            <p>Keyboard-driven audio pads using data attributes and the keydown event.</p>
+          </article>
+        </li>
+      </ul>
     </section>
   </main>
 
